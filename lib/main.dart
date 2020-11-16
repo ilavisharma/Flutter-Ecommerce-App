@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/screens.dart';
@@ -16,10 +17,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Ecommerce',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: 'SF-Pro',
+        pageTransitionsTheme: PageTransitionsTheme(builders: {
+          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        }),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: GetStartedScreen(),
+      routes: {
+        EnterPhoneScreen.routeName: (ctx) => EnterPhoneScreen(),
+      },
     );
   }
 }
