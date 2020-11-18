@@ -52,31 +52,31 @@ class GetStartedScreen extends StatelessWidget {
                 )),
             height: totalHeight * 0.35,
             width: totalWidth,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                    text: 'My',
-                    style: TextStyle(
-                        fontSize: 30.0,
-                        color: Color(0xFFE7B944),
-                        fontWeight: FontWeight.w900,
-                        fontFamily: 'Montserrat'),
-                  ),
-                  TextSpan(
-                    text: 'Shop',
-                    style: TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                        fontFamily: 'Montserrat'),
-                  ),
-                ])),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                      text: 'My',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          color: Color(0xFFE7B944),
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Montserrat'),
+                    ),
+                    TextSpan(
+                      text: 'Shop',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Montserrat'),
+                    ),
+                  ])),
+                  Text(
                     'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
                     style: TextStyle(
                       color: Colors.white,
@@ -84,15 +84,15 @@ class GetStartedScreen extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                Button(
-                  text: "Get Started",
-                  onPressed: () {
-                    Navigator.pushNamed(context, EnterPhoneScreen.routeName);
-                  },
-                ),
-                SizedBox(height: 13)
-              ],
+                  Button(
+                    text: "Get Started",
+                    onPressed: () {
+                      Navigator.pushNamed(context, EnterPhoneScreen.routeName);
+                    },
+                  ),
+                  SizedBox(height: 13)
+                ],
+              ),
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/verification_screen.dart';
 import 'package:ecommerce_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -7,47 +8,79 @@ class EnterPhoneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ClippedHeader('What Is Your Phone\nNumber?'),
-          Padding(
-            padding: EdgeInsets.all(0),
-            child: Text('Please enter your phone number to verify your account',
-                style: TextStyle(
-                  fontSize: 18,
-                )),
-          ),
-          TextField(
-            keyboardType: TextInputType.phone,
-          ),
-        ],
+      body: GestureDetector(
+        onTap: () {
+          // Hide soft keyboard when clicked outside
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.focusedChild.unfocus();
+          }
+        },
+        child: Column(
+          children: [
+            ClippedHeader('What Is Your Phone\nNumber?'),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 25),
+                    child: Text(
+                      'Please enter your phone number to verify your account',
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.w200),
+                    ),
+                  ),
+                  TextField(
+                    maxLength: 10,
+                    textAlign: TextAlign.center,
+                    showCursor: false,
+                    style: TextStyle(
+                      fontSize: 19,
+                    ),
+                    decoration: InputDecoration(
+                      hintText: '(99) 999 99 99',
+                      counterText: '',
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                      hintStyle: TextStyle(fontSize: 19, letterSpacing: 1.1),
+                      prefixText: '+91',
+                      prefixIcon: Icon(Icons.flag),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                    ),
+                    keyboardType: TextInputType.phone,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 18, bottom: 10),
+                    child: Button(
+                      text: 'Send Verification Code',
+                      onPressed: () => Navigator.pushNamed(
+                          context, VerificationScreen.routeName),
+                    ),
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: FlatButton(
+                      child: Text(
+                        'Skip',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color(0xFF9B9B9B),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17),
+                      ),
+                      onPressed: () => Navigator.pushNamed(
+                          context, VerificationScreen.routeName),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
-  }
-}
-
-class _MyCustomClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-
-    final double _xScaling = size.width / 375;
-    final double _yScaling = size.height / 197;
-    path.lineTo(0 * _xScaling, 0 * _yScaling);
-    path.cubicTo(0, 0, 375 * _xScaling, 0, 375 * _xScaling, 0);
-    path.cubicTo(375 * _xScaling, 108.8 * _yScaling, 286.8 * _xScaling,
-        197 * _yScaling, 178 * _xScaling, 197 * _yScaling);
-    path.cubicTo(178 * _xScaling, 197 * _yScaling, 0, 197 * _yScaling, 0,
-        197 * _yScaling);
-    path.cubicTo(0, 197 * _yScaling, 0, 0, 0, 0);
-    path.cubicTo(0, 0, 0, 0, 0, 0);
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return true;
   }
 }

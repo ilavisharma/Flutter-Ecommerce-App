@@ -8,18 +8,21 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      onPressed: onPressed,
-      child: Text(text,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 17,
-            fontFamily: 'SF-Pro',
-          )),
-      color: Color(0xFFE7B944),
-      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 80),
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))),
+    return SizedBox(
+      width: double.infinity,
+      child: FlatButton(
+        onPressed: onPressed,
+        child: Text(text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            )),
+        color: Color(0xFFE7B944),
+        padding: EdgeInsets.symmetric(vertical: 16),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+      ),
     );
   }
 }

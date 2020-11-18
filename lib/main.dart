@@ -8,6 +8,7 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // transparent status bar
   ));
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
@@ -16,8 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ecommerce',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'SF-Pro',
+        primaryColor: Color(0xFF845FA1),
         pageTransitionsTheme: PageTransitionsTheme(builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
@@ -27,6 +30,7 @@ class MyApp extends StatelessWidget {
       home: GetStartedScreen(),
       routes: {
         EnterPhoneScreen.routeName: (ctx) => EnterPhoneScreen(),
+        VerificationScreen.routeName: (ctx) => VerificationScreen(),
       },
     );
   }
