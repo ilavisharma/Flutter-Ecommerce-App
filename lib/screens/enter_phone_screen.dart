@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/screens/verification_screen.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 import 'package:ecommerce_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -60,20 +60,10 @@ class EnterPhoneScreen extends StatelessWidget {
                           context, VerificationScreen.routeName),
                     ),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: FlatButton(
-                      child: Text(
-                        'Skip',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color(0xFF9B9B9B),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17),
-                      ),
-                      onPressed: () => Navigator.pushNamed(
-                          context, VerificationScreen.routeName),
-                    ),
+                  FadedButton(
+                    text: 'Skip',
+                    onPressed: () => Navigator.pushNamed(
+                        context, VerificationScreen.routeName),
                   ),
                 ],
               ),
