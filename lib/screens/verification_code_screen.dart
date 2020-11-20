@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class VerificationScreen extends StatelessWidget {
   static const routeName = "/verification";
 
-  List<Widget> _buildTextFields() {
+  List<Widget> _buildTextFields(BuildContext context) {
     return List(4).map((_) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
@@ -12,8 +12,11 @@ class VerificationScreen extends StatelessWidget {
           maxLength: 1,
           textAlign: TextAlign.center,
           keyboardType: TextInputType.number,
+          textInputAction: TextInputAction.next,
+          onChanged: (_) => FocusScope.of(context).nextFocus(),
           style: TextStyle(
             fontSize: 25,
+            fontWeight: FontWeight.bold,
           ),
           decoration: InputDecoration(
             counterText: '',
@@ -38,7 +41,7 @@ class VerificationScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Please enter Code sent to ',
+                  'Please enter code sent to ',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 17,
@@ -68,7 +71,7 @@ class VerificationScreen extends StatelessWidget {
                   ),
                 ),
                 Table(
-                  children: [TableRow(children: _buildTextFields())],
+                  children: [TableRow(children: _buildTextFields(context))],
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 12),
