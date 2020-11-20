@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
       routes: {
         EnterPhoneScreen.routeName: (ctx) => EnterPhoneScreen(),
         VerificationScreen.routeName: (ctx) => VerificationScreen(),
+        HomeScreen.routeName: (ctx) => HomeScreen(),
       },
     );
   }

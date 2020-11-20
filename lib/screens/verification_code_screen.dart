@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/widgets/widgets.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class VerificationScreen extends StatelessWidget {
@@ -77,12 +78,14 @@ class VerificationScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 12),
                   child: Button(
                     text: 'Send Verification Code',
-                    onPressed: () {},
+                    onPressed: () =>
+                        Navigator.pushNamed(context, HomeScreen.routeName),
                   ),
                 ),
                 FadedButton(
                   text: 'Resend Code',
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.pushNamed(context, HomeScreen.routeName),
                 )
               ],
             ),
