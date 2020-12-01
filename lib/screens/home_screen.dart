@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/data/categories.dart';
+import 'package:ecommerce_app/data/products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ecommerce_app/widgets/widgets.dart';
@@ -42,9 +43,17 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  List<Widget> _buildFeaturedProducts() {
+    return FeaturedProducts.map((product) => ProductItem(
+        image: AssetImage(product['image']),
+        price: product['price'],
+        name: product['name'])).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFE5E5E5),
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
         leading: SvgPicture.asset(
@@ -59,16 +68,18 @@ class HomeScreen extends StatelessWidget {
               TextSpan(
                 text: 'My',
                 style: TextStyle(
-                    color: Color(0xFFE7B944),
-                    fontWeight: FontWeight.w900,
-                    fontFamily: 'Montserrat'),
+                  color: Color(0xFFE7B944),
+                  fontWeight: FontWeight.w900,
+                  fontFamily: 'Montserrat',
+                ),
               ),
               TextSpan(
                 text: 'Shop',
                 style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w900,
-                    fontFamily: 'Montserrat'),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontFamily: 'Montserrat',
+                ),
               ),
             ],
           ),
@@ -83,7 +94,7 @@ class HomeScreen extends StatelessWidget {
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 18),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 160,
@@ -118,6 +129,24 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   children: _buildCategories(),
                 ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
+                child: Text(
+                  'Featured',
+                  style: TextStyle(
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              GridView.count(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                children: _buildFeaturedProducts(),
+                childAspectRatio: 0.58,
+                physics: NeverScrollableScrollPhysics(),
               ),
             ],
           ),
