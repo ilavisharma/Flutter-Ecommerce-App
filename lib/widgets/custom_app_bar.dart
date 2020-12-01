@@ -12,7 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => Size.fromHeight(150);
+  Size get preferredSize => Size.fromHeight(120);
 
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
@@ -26,7 +26,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             heightFactor: 0.8,
             alignment: Alignment.topCenter,
             child: Container(
-              height: 130,
+              height: 110,
               padding: EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -46,6 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Container(
+            height: 46,
             margin: EdgeInsets.symmetric(horizontal: 23),
             decoration: BoxDecoration(
               boxShadow: [
@@ -62,15 +63,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
-              textAlign: TextAlign.left,
               decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  hintText: "What are you looking for?",
-                  prefixIcon: Icon(Icons.search),
-                  border: border,
-                  enabledBorder: border,
-                  focusedBorder: border),
+                filled: true,
+                fillColor: Colors.white,
+                hintText: "What are you looking for?",
+                prefixIcon: Icon(Icons.search),
+                border: border,
+                enabledBorder: border,
+                focusedBorder: border,
+              ),
             ),
           )
         ],
