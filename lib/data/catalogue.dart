@@ -1,4 +1,4 @@
-const Categories = [
+const Catalogue = [
   {'title': 'Women\'s Fashion', 'image': 'assets/images/womens_fashion.jpg'},
   {'title': 'Men\'s Fashion', 'image': 'assets/images/mens_fashion.jpg'},
   {'title': 'Phones', 'image': 'assets/images/phones.jpg'},

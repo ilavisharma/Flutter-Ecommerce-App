@@ -1,5 +1,6 @@
-import 'package:ecommerce_app/data/categories.dart';
+import 'package:ecommerce_app/data/catalogue.dart';
 import 'package:ecommerce_app/data/products.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ecommerce_app/widgets/widgets.dart';
@@ -7,11 +8,11 @@ import 'package:ecommerce_app/widgets/widgets.dart';
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home';
 
-  List<Widget> _buildCategories() {
+  List<Widget> _buildCatalogue() {
     return List.generate(
-      Categories.length,
+      Catalogue.length,
       (i) => Container(
-        margin: i != Categories.length - 1
+        margin: i != Catalogue.length - 1
             ? EdgeInsets.only(right: 20)
             : EdgeInsets.zero,
         height: 100,
@@ -19,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(8)),
           image: DecorationImage(
-            image: AssetImage(Categories[i]['image']),
+            image: AssetImage(Catalogue[i]['image']),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
               Color(0x7334283E),
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         child: Align(
           alignment: Alignment.center,
           child: Text(
-            Categories[i]['title'],
+            Catalogue[i]['title'],
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -91,28 +92,28 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 18),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 160,
-              ),
-              Carousal(),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Catalogue',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+        padding: EdgeInsets.symmetric(horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 160,
+            ),
+            Carousal(),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Catalogue',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
+                  ),
+                  FlatButton(
+                    child: Text(
                       'See All',
                       style: TextStyle(
                         fontSize: 13,
@@ -120,36 +121,38 @@ class HomeScreen extends StatelessWidget {
                         color: Color(0xFF9B9B9B),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: _buildCategories(),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  'Featured',
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
+                    onPressed: () =>
+                        Navigator.pushNamed(context, CatalogueScreen.routeName),
                   ),
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: _buildCatalogue(),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Text(
+                'Featured',
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              GridView.count(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                children: _buildFeaturedProducts(),
-                childAspectRatio: 0.58,
-                physics: NeverScrollableScrollPhysics(),
-              ),
-            ],
-          ),
+            ),
+            GridView.count(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              children: _buildFeaturedProducts(),
+              childAspectRatio: 0.58,
+              physics: NeverScrollableScrollPhysics(),
+            ),
+          ],
         ),
       ),
     );
