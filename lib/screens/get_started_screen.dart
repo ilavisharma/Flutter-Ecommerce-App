@@ -17,7 +17,7 @@ class GetStartedScreen extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/get_started_girl.png',
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
               color: Color(0x732A034B),
               colorBlendMode: BlendMode.srcOver,
               height: totalHeight * 0.7,
