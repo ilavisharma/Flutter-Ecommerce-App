@@ -79,13 +79,13 @@ class VerificationScreen extends StatelessWidget {
                   child: Button(
                     text: 'Send Verification Code',
                     onPressed: () =>
-                        Navigator.pushNamed(context, HomeScreen.routeName),
+                        Navigator.pushNamed(context, HomeTabsScreen.routeName),
                   ),
                 ),
                 FadedButton(
                   text: 'Resend Code',
                   onPressed: () =>
-                      Navigator.pushNamed(context, HomeScreen.routeName),
+                      Navigator.pushNamed(context, HomeTabsScreen.routeName),
                 )
               ],
             ),
