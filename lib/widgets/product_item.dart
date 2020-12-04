@@ -69,10 +69,11 @@ class ProductItem extends StatelessWidget {
                             ).createShader(rect);
                           },
                           child: Icon(
-                            Icons.favorite,
+                            Icons.favorite_border,
                             size: 22,
                             color: Colors.white,
-                          )),
+                          ),
+                        ),
                 ),
               )
             ],

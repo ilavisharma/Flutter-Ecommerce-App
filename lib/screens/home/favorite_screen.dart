@@ -2,7 +2,7 @@ import 'package:ecommerce_app/data/products.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/widgets/widgets.dart';
 
-class FavoriteScreen extends StatelessWidget {
+class FavoriteTab extends StatelessWidget {
   List<Widget> _buildFavoriteProducts() {
     return FavoriteProducts.map((prod) {
       return ProductItem(

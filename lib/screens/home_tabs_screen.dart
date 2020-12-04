@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/screens/home/catalogue_tab.dart';
 import 'package:ecommerce_app/screens/home/favorite_screen.dart';
 import 'package:ecommerce_app/screens/home/home_tab.dart';
+import 'package:ecommerce_app/screens/home/profile_tab.dart';
 import 'package:flutter/material.dart';
 
 class HomeTabsScreen extends StatefulWidget {
@@ -29,13 +30,14 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
     {
       'icon': Icons.favorite,
       'name': 'Favorite',
-      'widget': FavoriteScreen(),
+      'widget': FavoriteTab(),
       'appBar': FavoriteTabAppBar()
     },
     {
       'icon': Icons.account_circle,
       'name': 'Profile',
-      'widget': Center(child: Text('Profile Screen'))
+      'widget': ProfileTab(),
+      'appBar': ProfileTabAppBar()
     },
   ];
 
