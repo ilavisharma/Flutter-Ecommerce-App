@@ -1,21 +1,19 @@
-import 'package:ecommerce_app/data/catalogue.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce_app/data/catalogue.dart';
 
-class CatalogueScreen extends StatelessWidget {
-  static const routeName = '/catalogue';
+const _categories = [
+  'Clothing',
+  'Shoes',
+  'Jewelry',
+  'Watches',
+  'Handbags',
+  'Accessories',
+  'Men\'s Fashion',
+  'Girls\' Fashion',
+  'Boys\' Fashion'
+];
 
-  static const _categories = [
-    'Clothing',
-    'Shoes',
-    'Jewelry',
-    'Watches',
-    'Handbags',
-    'Accessories',
-    'Men\'s Fashion',
-    'Girls\' Fashion',
-    'Boys\' Fashion'
-  ];
-
+class CatalogueTab extends StatelessWidget {
   void _handleItemClick(BuildContext context, String title) {
     showModalBottomSheet(
         context: context,
@@ -105,6 +103,89 @@ class CatalogueScreen extends StatelessWidget {
             height: 145,
           ),
           ..._buildCatalogue(context),
+        ],
+      ),
+    );
+  }
+}
+
+class CatalogueTabAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  @override
+  Size get preferredSize => Size.fromHeight(120);
+
+  Widget build(BuildContext context) {
+    final border = OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),
+      borderRadius: BorderRadius.all(Radius.circular(40)),
+    );
+    return Container(
+      child: Column(
+        children: [
+          Align(
+            heightFactor: 0.8,
+            alignment: Alignment.topCenter,
+            child: Container(
+              height: 110,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF845FA1), Color(0xFF34283E)],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.keyboard_backspace),
+                    iconSize: 28,
+                    color: Colors.white,
+                    onPressed: Navigator.of(context).pop,
+                  ),
+                  Text(
+                    'Catalogue',
+                    style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(width: 27),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            height: 46,
+            margin: EdgeInsets.symmetric(horizontal: 23),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 10,
+                  blurRadius: 30,
+                ),
+              ],
+            ),
+            child: TextField(
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                hintText: "What are you looking for?",
+                prefixIcon: Icon(Icons.search),
+                border: border,
+                enabledBorder: border,
+                focusedBorder: border,
+              ),
+            ),
+          ),
         ],
       ),
     );

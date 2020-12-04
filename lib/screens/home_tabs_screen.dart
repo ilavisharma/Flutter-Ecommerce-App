@@ -1,8 +1,7 @@
-import 'package:ecommerce_app/screens/home/catalogue_screen.dart';
-import 'package:ecommerce_app/screens/home/home_screen.dart';
+import 'package:ecommerce_app/screens/home/catalogue_tab.dart';
+import 'package:ecommerce_app/screens/home/favorite_screen.dart';
+import 'package:ecommerce_app/screens/home/home_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ecommerce_app/widgets/widgets.dart';
 
 class HomeTabsScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -15,12 +14,23 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
   int _selectedTab = 0;
 
   final _tabs = [
-    {'icon': Icons.home, 'name': 'Home', 'widget': HomeScreen()},
-    {'icon': Icons.category, 'name': 'Catalogue', 'widget': CatalogueScreen()},
+    {
+      'icon': Icons.home,
+      'name': 'Home',
+      'widget': HomeTab(),
+      'appBar': HomeTabAppBar()
+    },
+    {
+      'icon': Icons.category,
+      'name': 'Catalogue',
+      'widget': CatalogueTab(),
+      'appBar': CatalogueTabAppBar()
+    },
     {
       'icon': Icons.favorite,
       'name': 'Favorite',
-      'widget': Center(child: Text('Favorite Screen'))
+      'widget': FavoriteScreen(),
+      'appBar': FavoriteTabAppBar()
     },
     {
       'icon': Icons.account_circle,
@@ -71,41 +81,10 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFE5E5E5),
       extendBodyBehindAppBar: true,
-      appBar: CustomAppBar(
-        leading: SvgPicture.asset(
-          'assets/icons/menu-alt.svg',
-          height: 27,
-          width: 27,
-        ),
-        title: RichText(
-          text: TextSpan(
-            style: TextStyle(fontSize: 22.0),
-            children: [
-              TextSpan(
-                text: 'My',
-                style: TextStyle(
-                  color: Color(0xFFE7B944),
-                  fontWeight: FontWeight.w900,
-                  fontFamily: 'Montserrat',
-                ),
-              ),
-              TextSpan(
-                text: 'Shop',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900,
-                  fontFamily: 'Montserrat',
-                ),
-              ),
-            ],
+      appBar: _tabs[_selectedTab]['appBar'] ??
+          AppBar(
+            automaticallyImplyLeading: false,
           ),
-        ),
-        trailing: SvgPicture.asset(
-          'assets/icons/bell.svg',
-          height: 27,
-          width: 27,
-        ),
-      ),
       body: _tabs[_selectedTab]['widget'],
       bottomNavigationBar: Container(
         child: Stack(
