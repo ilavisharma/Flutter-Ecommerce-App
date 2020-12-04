@@ -59,12 +59,12 @@ class CatalogueTab extends StatelessWidget {
 
   List<Widget> _buildCatalogue(BuildContext context) {
     return Catalogue.map((item) {
-      return InkWell(
-        onTap: () => _handleItemClick(context, item['title']),
-        child: Card(
-          shadowColor: Colors.black,
-          elevation: 2.5,
-          margin: EdgeInsets.symmetric(vertical: 8),
+      return Card(
+        shadowColor: Colors.black,
+        elevation: 2.5,
+        margin: EdgeInsets.symmetric(vertical: 8),
+        child: InkWell(
+          onTap: () => _handleItemClick(context, item['title']),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
