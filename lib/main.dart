@@ -21,10 +21,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'SF-Pro',
         primaryColor: Color(0xFF845FA1),
-        pageTransitionsTheme: PageTransitionsTheme(builders: {
-          TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-        }),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: GetStartedScreen(),
