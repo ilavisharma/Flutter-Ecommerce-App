@@ -2,6 +2,8 @@ import 'package:ecommerce_app/screens/home/catalogue_tab.dart';
 import 'package:ecommerce_app/screens/home/favorite_screen.dart';
 import 'package:ecommerce_app/screens/home/home_tab.dart';
 import 'package:ecommerce_app/screens/home/profile_tab.dart';
+import 'package:ecommerce_app/screens/screens.dart';
+import 'package:ecommerce_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomeTabsScreen extends StatefulWidget {
@@ -31,7 +33,14 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
       'icon': Icons.favorite,
       'name': 'Favorite',
       'widget': FavoriteTab(),
-      'appBar': FavoriteTabAppBar()
+      'appBar': GradientAppbar(
+        leading: Icon(
+          Icons.keyboard_backspace,
+          size: 28,
+          color: Colors.white,
+        ),
+        title: 'Favorite',
+      )
     },
     {
       'icon': Icons.account_circle,
@@ -111,7 +120,10 @@ class _HomeTabsScreenState extends State<HomeTabsScreen> {
             Positioned(
               top: 0,
               right: 0,
-              child: _CartTab(),
+              child: GestureDetector(
+                  onTap: () =>
+                      Navigator.pushNamed(context, CartScreen.routeName),
+                  child: _CartTab()),
             ),
           ],
         ),

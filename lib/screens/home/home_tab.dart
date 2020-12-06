@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ecommerce_app/data/catalogue.dart';
 import 'package:ecommerce_app/data/products.dart';
 import 'package:ecommerce_app/widgets/widgets.dart';
+import 'package:ecommerce_app/screens/screens.dart';
 
 class HomeTab extends StatelessWidget {
   List<Widget> _buildCatalogue() {
@@ -41,12 +42,18 @@ class HomeTab extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildFeaturedProducts() {
-    return FeaturedProducts.map((product) => ProductItem(
-          image: AssetImage(product['image']),
-          price: product['price'],
-          name: product['name'],
-          liked: product['liked'],
+  List<Widget> _buildFeaturedProducts(BuildContext context) {
+    return FeaturedProducts.map((product) => GestureDetector(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ProductDetailScreen(product))),
+          child: ProductItem(
+            image: AssetImage(product['image']),
+            price: product['price'],
+            name: product['name'],
+            liked: product['liked'],
+          ),
         )).toList();
   }
 
@@ -107,7 +114,7 @@ class HomeTab extends StatelessWidget {
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             crossAxisCount: 2,
-            children: _buildFeaturedProducts(),
+            children: _buildFeaturedProducts(context),
             childAspectRatio: 0.58,
             physics: NeverScrollableScrollPhysics(),
           ),

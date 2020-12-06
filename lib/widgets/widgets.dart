@@ -5,3 +5,4 @@ export './custom_app_bar.dart';
 export './carousal.dart';
 export './product_item.dart';
 export './gradient_icon.dart';
+export './gragient_app_bar.dart';

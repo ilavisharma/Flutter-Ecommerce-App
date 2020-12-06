@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         EnterPhoneScreen.routeName: (ctx) => EnterPhoneScreen(),
         VerificationScreen.routeName: (ctx) => VerificationScreen(),
         HomeTabsScreen.routeName: (ctx) => HomeTabsScreen(),
+        CartScreen.routeName: (ctx) => CartScreen(),
       },
     );
   }

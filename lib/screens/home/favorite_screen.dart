@@ -21,7 +21,7 @@ class FavoriteTab extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 100,
+            height: 80,
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 25),
@@ -72,51 +72,6 @@ class FavoriteTab extends StatelessWidget {
             shrinkWrap: true,
             padding: EdgeInsets.zero,
             childAspectRatio: 0.58,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class FavoriteTabAppBar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Size get preferredSize => Size.fromHeight(90);
-
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Container(
-            height: 110,
-            padding: EdgeInsets.only(left: 10, right: 10, top: 35, bottom: 15),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF845FA1), Color(0xFF34283E)],
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.keyboard_backspace),
-                  iconSize: 28,
-                  color: Colors.white,
-                  onPressed: Navigator.of(context).pop,
-                ),
-                Text(
-                  'Favorite',
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(width: 27),
-              ],
-            ),
           ),
         ],
       ),
